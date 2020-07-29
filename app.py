@@ -176,7 +176,6 @@ def articles():
     # print(data)
     return render_template('articles.html', articles = data)
 
-
 @app.route('/article/<string:id>')
 @is_logged_in
 def article(id):
@@ -247,6 +246,12 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+@app.route('/graph')
+@is_logged_in
+def graph():
+
+    list_data =[0, 50, 5, 2, 20, 30, 4]
+    return render_template('graph.html', data = list_data)
 
 if __name__ =='__main__':
     app.secret_key = 'secretkey123456789'
