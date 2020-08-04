@@ -16,6 +16,39 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendors/styles/core.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendors/styles/icon-font.min.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="{{url_for('static', filename='js/utils.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    crossorigin="anonymous">
+    </script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+    crossorigin="anonymous">
+    </script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+    crossorigin="anonymous">
+</script> 
+<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	.chart-container {
+		width: 500px;
+		margin-left: 40px;
+		margin-right: 40px;
+		margin-bottom: 40px;
+	}
+	.container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	</style>
 </head>
 <body>
     {% include "includes/_navbar.html" %}
@@ -37,5 +70,8 @@
     <script src="{{url_for('static',filename='vendors/scripts/script.min.js')}}"></script>
     <script src="{{url_for('static',filename='vendors/scripts/process.js')}}"></script>
     <script src="{{url_for('static',filename='vendors/scripts/layout-settings.js')}}"></script>
+    <!-- 부트스트랩 -->
+    
+<!-- 차트 -->
 </body>
 </html>
