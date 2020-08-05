@@ -1,5 +1,6 @@
 from flask import Flask ,render_template, flash, redirect, url_for, session, request, logging
 # from data import Articles
+from datetime import time
 import pymysql
 from passlib.hash import pbkdf2_sha256
 from functools import wraps
@@ -8,6 +9,11 @@ app = Flask(__name__)
 app.debug=True
 
 db = pymysql.connect(host='localhost', port=3306, user='root', passwd='1234', db='dryroom')
+
+# @app.route("/")
+# def image():
+#     return render_template('image.html', image_file="image/test1.png")
+
 
 def is_logged_in(f):
     @wraps(f)
@@ -69,6 +75,7 @@ def is_admined(f):
             return f(*args, **kwargs)
     return wrap
 
+
 @app.route('/admin', methods = ['GET', 'POST'])
 @is_logged_in
 @is_admined
@@ -109,7 +116,6 @@ def index():
     return render_template('home.html')
 
 @app.route('/about')
-@is_logged_in
 def about():
     # print("Success")
     # return "TEST"
@@ -246,6 +252,18 @@ def delete(id):
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+@app.route("/graph")
+def graph():
+    legend = 'Temperatures'
+    temperatures = [73.7, 73.4, 73.8, 72.8, 68.7, 65.2,
+                    61.8, 58.7, 58.2, 58.3, 60.5, 65.7,
+                    70.2, 71.4, 71.2, 70.9, 71.3, 71.1]
+    times = ['12:00PM', '12:10PM', '12:20PM', '12:30PM', '12:40PM', '12:50PM',
+             '1:00PM', '1:10PM', '1:20PM', '1:30PM', '1:40PM', '1:50PM',
+             '2:00PM', '2:10PM', '2:20PM', '2:30PM', '2:40PM', '2:50PM']
+    return render_template('graph.html', values=temperatures, labels=times, legend=legend)
+
 
 
 if __name__ =='__main__':
